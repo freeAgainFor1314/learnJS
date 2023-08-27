@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>Date--日期</title>
+    <style type="text/css">
+
+
+
+
+    
+
+
+    </style>
+    <script type="text/javascript">
+        // var date = new Date();
+        // console.log(date);
+        //每隔1000ms就执行一次,定时器
+        // setInterval(function(){
+        //     console.log(111)
+
+        // },2000);
+        //var i =0;
+        // firstTime = date.getTime();
+        // setInterval(function(){
+        //     var lastTime = new Date().getTime();
+        //     console.log(lastTime - firstTime)
+        //     firstTime = lastTime;
+
+        //     //i++;
+        //    // console.log(i);
+        // },1000);
+        // setInterval 基于红黑树  高性能javascript  你不知道的js
+
+        // var i =0;
+        // var timer = setInterval(function(){
+        //     console.log(i++);
+        //     if(i >10){
+        //         clearInterval(timer);//timer 1
+        //     }
+        // },1000);
+
+        //隔一段时间执行 函数
+        // var timer = setTimeout(function(){
+
+        //     console.log(111);
+
+
+        // },1000);
+        // clearTimeout(timer);
+
+        
+
+
+
+
+    </script>
+    <!--async 类型异步加载外部js文件 script里不能写js 非IE浏览器使用 加载完就执行-->
+    <!-- <script type="text/javascript" async="async" src="...">
+        var x ="";
+    </script> -->
+
+<script type="text/javascript">
+    function loadScript(url,func){
+        var script = document.createElement('script')
+        script.type = 'text/javascript';
+        
+        //先绑定事件
+        if(script.readystate){
+            script.onreadystatechange = function(){
+                if(script.readystate == 'complete' || script.readystate == 'loaded'){
+                    func();
+                }
+            }
+
+        }else{
+            script.onload = function(){
+                func();
+            }  
+        }
+        //在加载url
+        script.src = url;
+        document.head.appendChild(script);
+        
+
+    }
+
+    //匿名函数  function(){}相当于函数引用， 不会读函数体 仅仅在执行的时候才会读。
+    //loadScript('tools.js',test);这种写法test 未定义
+    //func 执行  相当于 执行匿名函数 ，它将会执行test()
+    loadScript('tools.js',function(){
+        test();
+    });
+    
+
+</script>
+<script type="text/javascript">
+    
+    document.addEventListener('DOMContentLoaded',function(){
+        var div = document.getElementsByTagName('div');
+        console.log(div);
+    },false)
+</script>
+
+
+
+</head>
+<body>
+    <div style="width: 100px;height: 100px; background-color: red;"></div>
+    <!-- <script type="text/javascript">
+     
+        console.log(document.readyState);
+        document.onreadystatechange = function() {
+            console.log(document.readyState);
+        }
+        document.addEventListener('DOMContentLoaded',function(){
+            console.log('a');
+        });
+
+    </script> -->
+<!-- minutes:<input type="text" value="0" />
+seconds:<input type="text" value="0" /> -->
+<!-- <script type="text/javascript">
+    
+        var minNode = document.getElementsByTagName('input')[0];
+        var secNode = document.getElementsByTagName('input')[1];
+
+        var minutes = 0;
+        var seconds =0;
+
+        setInterval(function(){
+            seconds++;
+            if(seconds == 60){
+                seconds=0;
+                minutes++;
+            }
+            secNode.value = seconds;
+            minNode.value = minutes;
+
+            if(minutes == 3){
+                clearInterval(1);
+            }
+
+        },10);  
+</script> -->
+ 
+
+</body>
+</html>
+
+

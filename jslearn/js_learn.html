@@ -1,0 +1,296 @@
+
+
+<!doctype html>
+<html dir="ltr" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>tab标签点击事件</title>
+    <style type="text/css">
+
+
+    body{padding:0;font:12px"宋体";}
+    #lib_Tab1_sx{width:500px;margin:0px;padding:0px;margin-bottom:15px;overflow:hidden;}
+    .lib_tabborder_sx{border:1pxsolid#95C9E1;}
+    .lib_Menubox_sx{line-height:28px;position:relative;float:left;width:130px;height:240px;border-right:1pxsolid#95C9E1;}
+    .lib_Menubox_sxul{margin:0px;padding:0px;list-style:none;position:absolute;top:15px;left:5px;margin-left:10px;height:25px;text-align:center;}
+    .lib_Menubox_sxli{display:block;cursor:pointer;width:114px;color:#949694;font-weight:bold;margin-bottom:5px;height:25px;line-height:25px;background-color:#E4F2FD}
+    .lib_Menubox_sxli.hover{padding:0px;background:#fff;width:116px;border:1pxsolid#95C9E1;border-right:0;
+    color:#739242;height:25px;line-height:25px;}
+    .lib_Contentbox_sx{margin-top:0px;border-top:none;padding:20px;border-left:0;margin-left:130px;}
+
+
+
+
+    </style>
+    <script type="text/javascript">
+
+//         function test(){
+//             var arr = [];
+//             for(var i =0;i<10;i++){
+// // <!--                arr[i] = function(){-->
+// // <!--                   document.write(i+" ");-->
+// // <!--                }-->
+//                 //立即执行函数   找的j是找的立即函数里面的j， 一一对应
+//                 (function(j){
+//                   arr[j] = function(){
+//                       document.write(j+" ");
+//                   }
+//                 }(i));
+//             }
+//             return arr;
+//         }
+//         var myArr = test();
+//         for(var j=0;j<10;j++){
+//             var fun = myArr[j];
+//             fun();
+//         }
+
+//         function test2(){
+//             var food ="apple";
+//             var obj  ={
+//                eat:function(){
+//                   if(food !=""){
+//                     console.log("i am eating food "+ food);
+//                     food ="";
+//                   }else{
+//                     console.log("there is empty!");
+//                   }
+
+//                },
+//                pushFood:function(myFood){
+//                    food = myFood;
+//                }
+
+//             }
+//             return obj;
+
+
+//         }
+//         var person = test2();
+//         person.eat();
+//         person.eat();
+//         person.pushFood("banana");
+//         person.eat();
+
+// function Car(color){
+// 	this.color = color;
+// 	this.name ='BMW';
+// 	this.healthy=100;
+// 	this.run = function(){
+// 		this.healthy--;
+// 	}
+
+// }
+// var car = new Car('red');
+// var car1 = new Car('yellow');
+
+
+// function Student(name,age,sex){
+
+//     // var this ={}; this:{name: ,age: ,sex:}
+// 	this.name = name;
+// 	this.age = age;
+// 	this.sex = sex;
+// 	//return this;
+// }
+
+// var stu = new Student('zhangsan',18,'male');
+
+// var str = "abcd";
+// //new String("abcd").length =2 delete
+// str.length =2;
+// console.log(str);
+
+//typeof number string boolean object undefined function 
+
+// function Car(){
+	
+
+// }
+// function Person(){
+
+// }
+// Car.prototype ={
+// 	constructor: Person
+// }
+
+// var car = new Car();
+
+
+// Person.prototype.name = 'abc';
+// function Person(){
+// 	//var this ={__proto__ : Person.prototype}
+// 	//
+
+// }
+
+// var obj = {name:"a"};
+// var obj1 = obj;
+// obj ={name:"b"};
+
+
+//call apply 可以改变this指向
+// function Person(name ,age){
+// 	this.name = name;
+// 	this.age = age;
+// 	this.sayHello = function(){
+// 		console.log(111);
+// 	};
+// }
+// var obj ={};
+// var person = new Person('deng',35);
+// //call 改变this指向(obj代替this) 利用别人函数实现自己的功能
+// Person.apply(obj,['cheng',35]);
+
+// call 需要把实参按照形参的个数传进去 
+// apply 需要传一个arguments
+//圣杯模式
+Father.prototype.lastName ='Deng';
+function Father(){
+
+}
+
+function Son(){
+
+}
+
+// function inherit(Target,Origin){
+
+//  	function F(){};
+//  	F.prototype = Origin.prototype;
+//  	Target.prototype = new F();
+//  	Target.prototype.constructor = Target;
+//  	Target.prototype.uber = Origin.prototype;
+//  }  
+
+//  inherit(Son,Father);
+//  var son = new Son();
+//  var father = new Father(); 	
+
+//闭包的应用 ---私有化属性的封装
+// var init = (function(){
+
+// 	var name ='abc';
+// 	function callName(){
+// 		console.log(name);
+
+// 	}
+// 	return function(){
+// 		callName();
+// 	};
+
+// }());
+
+// init();
+
+//instanceof  理解： 只需要看A对象的原型链上有没有 函数的原型
+//区别数组和对象的方法
+//Object.prototype.toString.call([]);
+
+//func没有被调用 就要走预编译过程
+//a.say 仅仅只是声明 ，say方法还没执行。把它赋予给var b = a.say 后，在全局执行b() 后那么say方法里面的this 指向的是全局的window
+//直白点说 把函数拿出来了（解释型语言），但是在执行的过程 就是在全局执行了。
+
+//arguments.callee 指向函数自身的引用 func.caller -- func在哪个函数里调用了，就是指向那个函数
+
+// var num = (function(n){
+// 	if(n ==1){
+// 		return 1;
+// 	}
+// 	return n * arguments.callee(n-1);
+
+// }(5));
+
+var obj = {
+	name :'deng',
+	age :35,
+	card :['visa','master'],
+	children:{
+		name:'dengmeili',
+		sex :'female'
+	}
+}
+
+var target = Object.create(obj);
+
+
+
+//深拷贝
+// function deepClone(target,origin){
+
+// 	var toStr = Object.prototype.toString,
+// 	    arrStr = '[object Array]',
+// 	    target  = target || {};
+// 	 //循环origin
+// 	for (var prop in origin) {
+
+// 		//对象自有的属性，原型链继承来的属性不会检测
+// 		if(origin.hasOwnProperty(prop)){
+
+// 			//判断origin[prop] 是原始类型还是对象类型
+// 			if(origin[prop] !=='null' && typeof(origin[prop]) =='object'){
+
+// 				//还要判断origin[prop] 是数组类型还是对象类型
+// 				if(toStr.call(origin[prop])== arrStr){
+// 					target[prop] =[];
+
+// 				}else{
+// 					target[prop] ={};
+// 				}
+
+// 				deepClone(target[prop],origin[prop]);
+
+// 			}else{
+// 				target[prop] = origin[prop];
+// 			}
+
+// 		}
+	    	
+// 	}
+// 	return target;   
+// }
+</script>
+
+</head>
+<body>
+
+
+<h1>学习JS</h1>
+<div id ="lib_Tab1_sx" class="lib_tabborder_sx">
+<div class="lib_Menubox_sx">
+<ul>
+    <li id ="one1" class="hover">脚本代码</li>
+    <li id="one2" >ASP类</li>
+    <li id="one3" >PHP类</li>
+    <li id="one4" >JSP类</li>
+    <li id="one5" >.NET类</li>
+</ul>
+
+</div>
+    <script type="text/javascript">
+        function test3(){
+            var listLi = document.getElementsByTagName('li');
+            for(var i=0;i<listLi.length;i++){
+               (function(j){
+                listLi[j].onclick = function(){
+                   console.log(j);
+                }
+               }(i));
+            }
+        }
+        test3();
+    </script>
+<div class="lib_Contentbox_sx">
+<div id="con_one_1">脚本列表</div>
+<div id="con_one_2"style="display:none">ASP类更新</div>
+<div id="con_one_3"style="display:none">PHP类更新</div>
+<div id="con_one_4"style="display:none">JSP类更新</div>
+<div id="con_one_5"style="display:none">ASP.NET类更新</div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+

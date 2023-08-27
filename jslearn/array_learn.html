@@ -1,0 +1,95 @@
+
+
+<!doctype html>
+<html dir="ltr" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>数组学习</title>
+    <style type="text/css">
+
+
+    
+
+
+
+    </style>
+<script type="text/javascript">
+var ary = [3,7,4,6,8,10];
+//往后加
+// ary.push(1);
+// //往前加
+// ary.unshift(-1,2);
+// //获取数组里第一个
+// ary.shift();
+// //获取数组最后一个
+// ary.pop();
+
+//（从第0位开始，截取多少长度，在切口出添加新的数据），返回 满足条件的片段数组
+//ary.splice(0,2,4,4,4);
+//添加5进去在4，6之间
+//ary.splice(2,0,5);
+
+//冒泡排序
+// ary.sort(function(a,b){
+
+//     return a-b;
+
+// });
+
+//不改变原数组 concat slice-> 左闭右开 toString join
+//从该位开始截取，截取到该位。以下例子从第一位开始截取，截取到该位
+//ary.slice(1,2);
+
+
+//类数组 属性要为 索引属性--数字。必须要有length属性 ，最好加上push方法
+// function test() {
+//     console.log(arguments);
+// }
+// test(1,2,3,4,5);
+// var obj2 = {
+    
+//     '1':'b',
+//     '2':'c',
+//     'length':2,
+//     'push':Array.prototype.push,
+//     'splice':Array.prototype.splice
+// }
+//模拟 类数组push原理方法：
+// Array.prototype.push = function(target){
+//     obj[obj.length] = target;
+//     obj.length++;
+// }
+//数组去重
+// Array.prototype.unique = function(){
+
+//     var temp ={},ary = [];
+//     for(var i =0,len = this.length; i<len; i++){
+
+//         if(!temp[this[i]]){
+//             //'abc'这块 不能替换为this[i] 会重复添加
+//             temp[this[i]] = 'abc';
+//             ary.push(this[i]);
+//         }
+
+//     }
+//     return ary;
+
+// };
+// var ary = [3,3,3,4,4,5,5,6];
+//原型必须基于构造函数,没有构造函数，原型就没有意义
+
+
+
+</script>
+
+</head>
+<body>
+
+
+<h1>学习JS</h1>
+
+
+</body>
+</html>
+
+

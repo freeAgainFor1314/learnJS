@@ -1,0 +1,158 @@
+<!doctype html>
+<html dir="ltr" lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>正则表达式学习</title>
+    <style type="text/css">
+
+    </style>
+<script type="text/javascript">
+
+// var regExp = /\w/;
+
+// console.log(regExp.test("agc"));
+// var regExp1 = /aBce/i;
+// console.log(regExp1.test("abce"));
+
+// var regExp2 = new RegExp(regExp,"i");
+// console.log(regExp2.test("abce"));
+
+// var reg = /ab/g;
+// var str = "ababababababababa";
+// console.log(str.match(reg));
+
+// var reg1 = /^a/gm;
+// var str2 = "abcde\na";
+// console.log(reg1.test(str2));
+// console.log(str2.match(reg1));
+//[]代表一位 里面填的是区间
+//[^] 代表非
+// var reg =/[0-9][0-9][0-9]/g;
+// var str = "123sjfkdsj987lskfj";
+// console.log(str.match(reg));
+//（abc|bcd） 代表 匹配abc 或者bcd []匹配一个，（）代表连续多个
+// var reg =/(abc|bcd)[0-9]/g;
+// var str = "abc2";
+// console.log(str.match(reg));
+//  \w word 匹配一个 单词字符[0-9A-z_] \W = /[^\w]/
+// \s 包含 空白字符 空格 制表 换行 回车
+// \b 单词边界
+// \B 非单词边界
+// var reg =/[\w]/g;
+// var str = "abc2";
+// console.log(str.match(reg));
+// var reg =/\bc/g;
+// var str = "abc cd2";
+// console.log(str.match(reg));
+// var reg =/\w*/g;
+// var str = "abc";
+// console.log(str.match(reg));
+//贪婪匹配原则 尽量多
+//n{3} 3个 3个匹配
+//n{3,5} 先5个匹配 如果剩下4个就匹配4个，最后没的匹配了就匹配3个
+
+// var reg =/\w{2,}/g;
+// var str = "aaaaaaaaaaaaaaaa";
+// console.log(str.match(reg));
+
+// var reg =/^\d|\d$/gi;
+// var str = '123abc345';
+// console.log(str.match(reg));
+// \1 反向第一个子表达式的内容
+// var reg =/(\w)\1(\w)\2/g;
+// var str = "aabb";
+// console.log(str.match(reg));
+// aabb -> bbaa
+// var reg =/(\w)\1(\w)\2/g;
+// var str = "aabb";
+// console.log(str.replace(reg,"$2$2$1$1"));
+// var rlt = str.replace(reg,function($,$1,$2){
+//     return $2 +$2 +$1 +$1;
+// });
+// console.log(rlt);
+
+// the-first-name  -> theFirstName
+// var reg = /-(\w)/g;
+// var str = "the-first-name";
+// //$ 字表达是
+// var rlt = str.replace(reg,function($,$1){
+
+//   return $1.toUpperCase();
+
+// });
+// console.log(rlt);
+//正向预查或者断言 只是用于指定一个位置它是零宽的（匹配宽度为零的断言），因此也叫零宽断言
+// var reg = /a(?=b)/g;
+// var str = "javaScript: The Definitive Guide";
+// var reg = /[Jj]ava([Ss]cript)?(?=\:)/;
+// console.log(str.match(reg));
+
+//负向先行断言 表否定意义 ?!P 表示不能匹配P
+// var reg = /Java(?!Script)([A-Z]\w*)/;
+// var str = "JavaBean";
+// var str = "JavaScript";
+// var str = "JavaScripter";
+// console.log(str.match(reg));
+// console.log(str.match(reg));
+// console.log(str.match(reg));
+//在字符串 '北京市(朝阳区)(西城区)(海淀区)' 中，取出没有被()包裹的字符北京市
+// var str = '北京市(朝阳区)(西城区)(海淀区)';
+// var reg = /.*?(?=\()/;
+// console.log(str.match(reg));
+//衣服38元、鞋子62元、剪发15元、吃饭45元、打车30元、冰激凌10元，对花费的金钱求和
+// var str = '衣服38元、鞋子62元、剪发15元、吃饭45块、打车30元、冰激凌10元，对花费的金钱求和';
+// var reg = /\d.?\d(?=[元块])/g;
+// console.log(str.match(reg));
+//'i like eating 、sleeping、 see movies and ' 中拿到以 ing 结尾的动作单词
+// var str = 'i like eating 、sleeping、 see movies and ';
+// var reg =/\w+(?=ing)/g;
+// console.log(str.match(reg));
+
+//测试一个文件是否是.css后缀，但又不能是.min.css，
+// 如： test('a.min.css'); // false test('b.css'); // true test('c.mining.css'); // true
+
+//var str = 'a.min.css';
+//var str = 'a.mining.css';
+var str = 'b.css';
+var reg = /^(?!.*\.min\.css).+\.css$/;
+//console.log(str.match(reg));
+console.log(reg.exec(str));
+
+
+//打破贪婪匹配 量词后面增加？
+//aaaabbbbccc -> abc
+// var reg = /(\w)\1*/g;
+// var str = "aaaaabbbbbccccc";
+// var rlt = str.replace(reg,function($,$1){
+//     return $1;
+// });
+// console.log(rlt);
+
+// (\d{3})+ 3个数字一组 可以匹配一个或者多个
+//找到这个空格，什么样的空格呢，就是非单词边界，有一个或者多个 以3个数字为一组结束 的空格,替换为 '.' 
+// var reg = /(?=(\B)(\d{3})+$)/g;
+// var str = "100000000000";
+// var rlt = str.replace(reg,function($,$1){
+//
+//     return ".";
+//
+// });
+// console.log(rlt);
+
+
+
+
+
+</script>
+
+</head>
+<body>
+
+
+<h1>学习JS-正则表达式</h1>
+
+
+</body>
+</html>
+
+
